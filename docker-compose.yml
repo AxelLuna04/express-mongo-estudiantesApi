@@ -21,7 +21,7 @@ services:
 
   # El servicio de la base de datos
   mongo:
-    image: mongo:latest
+    image: mongo:4.4
     container_name: estudiantes-db
     volumes:
       - mongodata:/data/db
