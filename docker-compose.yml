@@ -1,25 +1,17 @@
-# (Pon esto en C:\guest6\express-mongo-estudiantesApi\docker-compose.yml)
-
 version: '3.8'
 services:
-  # El servicio de nuestra aplicación
   app:
-    # Construye la imagen usando el Dockerfile de este directorio
+
     build: .
     container_name: estudiantes-api
     ports:
-      # Mapea el puerto 3001 del HOST (VM) al 3000 del CONTENEDOR
-      # Usamos 3001 para que no choque con Jenkins (8080)
       - "3001:3000"
     environment:
-      # La app buscará la base de datos en el host 'mongo'
       - MONGODB_URI=mongodb://mongo:27017/estudiantesdb
     depends_on:
       - mongo
     networks:
       - estudiantes-net
-
-  # El servicio de la base de datos
   mongo:
     image: mongo:4.4
     container_name: estudiantes-db
